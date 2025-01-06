@@ -132,7 +132,7 @@ and this project adheres to
 
 ### Fixed
 
-- cosmwasm-vm: Remove system-dependent stacktrace from `VmError::RuntimeErr`
+- cosmwasm-vm: Remove system-dependent stack trace from `VmError::RuntimeErr`
   (fixes CWA-2021-003).
 
 ## [1.0.0-beta3]
@@ -141,7 +141,7 @@ and this project adheres to
 
 - cosmwasm-std: New const methods `Uint64::to_be_bytes`/`::to_le_bytes`.
 - cosmwasm-vm: The check_contracts tool now has a `--supported-features` option
-  that defaults to "iterator,staking,stargate".
+  that defaults to "iterator, staking,stargate".
 - cosmwasm-vm: The default `singlepass` compiler is now supported on 64-bit
   Windows.
 - cosmwasm-std: Add missing `DivideByZeroError` export.
@@ -159,7 +159,7 @@ and this project adheres to
 ### Removed
 
 - cosmwasm-std: Remove the macros `create_entry_points` and
-  `create_entry_points_with_migration` in favour of the new, more flexible entry
+  `create_entry_points_with_migration` in favor of the new, more flexible entry
   point system introduced in CosmWasm 0.14.
 
 ## [1.0.0-beta] - 2021-10-11
@@ -190,11 +190,11 @@ and this project adheres to
 - cosmwasm-vm: Increase `MAX_LENGTH_HUMAN_ADDRESS` from 90 to 256 in order to
   support longer address formats than bech32.
 - cosmwasm-std: Make `CustomQuery` a subtrait of `Clone`, i.e. types that
-  implement `CustomQuery` need to be `Clone`able.
+  implement `CustomQuery`, which needs to be `Clone`able.
 - cosmwasm-std: Add generic for custom query type to `QuerierWrapper`, `Deps`,
   `DepsMut` and `OwnedDeps`. Merge `QuerierWrapper::custom_query` into the now
   fully typed `QuerierWrapper::query`.
-- cosmwasm-std: Add generic type `Q` for the custom query request type to
+- cosmwasm-std: Add generic type `Q` for the custom query requesImplement
   `do_instantiate`, `do_execute`, `do_migrate`, `do_sudo`, `do_reply`,
   `do_query`, `ibc_channel_open`, `ibc_channel_connect`, `ibc_channel_close`,
   `ibc_packet_receive`, `ibc_packet_ack` and `ibc_packet_timeout`.
@@ -321,7 +321,7 @@ and this project adheres to
 - cosmwasm-std: `attr` (and `Attribute::new`) will now panic in debug builds if
   the attribute's key starts with an underscore. These names are reserved and
   could cause problems further down the line.
-- cosmwasm-std: `Response`, `IbcBasicResponse` and `IbcReceiveResponse` can no
+- cosmwasm-std: `Response`, `IbcBasicResponse`, and `IbcReceiveResponse` can no
   longer be constructed using struct literals. Use constructors like
   `Response::new` to construct empty structs and appropriate builder-style
   methods to set fields (`response.add_message`, `response.set_data`, etc).
@@ -386,7 +386,7 @@ and this project adheres to
 - cosmwasm-std: Rename the `send` function parameter to `funds` in `WasmMsg` for
   consistency with the wasmd message types.
 - cosmwasm-vm: Increase read limit of contract execution results from 100,000
-  bytes to 64 MiB. JSON deserializers should have their own limit to protect
+  bytes to 64 MiB. JSON deserializers should have their limit to protect
   against large deserializations.
 - cosmwasm-vm: Create `VmError::DeserializationLimitExceeded`; Add limit
   argument to `from_slice`; Increase deserialization limit of contract execution
@@ -460,7 +460,7 @@ and this project adheres to
   secp256k1 signature verification scheme for Cosmos signature and public key
   formats. ([#780])
 - cosmwasm-vm: Add PinnedMemoryCache. ([#696])
-- cosmwasm-vm: The new `Cache::analyze` provides a static analyzis of the Wasm
+- cosmwasm-vm: The new `Cache::analyze` provides a static analysis of the Wasm
   bytecode. This is used to tell the caller if the contract exposes IBC entry
   points. ([#736])
 - cosmwasm-vm: Added new `stargate` feature flag to enable new stargate and ibc
@@ -476,7 +476,7 @@ and this project adheres to
   type to dispatch protobuf-encoded queries (contract must know proto schema for
   request and response) ([#706])
 - cosmwasm-std: (requires `stargate`) Added new `CosmosMsg::Ibc(IbcMsg)` message
-  type to use ibctransfer app or send raw ics packets (if contract has ibc entry
+  type to use ibctransfer app or send raw ics packets (if the contract has ibc entry
   points) ([#692], [#710])
 - cosmwasm-std: Add mutable helper methods to `InitResponse`, `MigrateResponse`
   and `HandleResponse` which make `Context` obsolete.
@@ -491,7 +491,7 @@ and this project adheres to
   get a callback from these messages after their execution (success or failure).
   ([#796])
 - cosmwasm-std: Added `reply` entry point that will receive all callbacks from
-  submessages dispatched by this contract. This is only required if contract
+  submessages dispatched by this contract. This is only required if the contract
   returns "submessages" (above). ([#796])
 - cosmwasm-std: Implement `From<Uint128> for String`, `From<Uint128> for u128`
   as well as `From<u{32,16,8}> for Uint128`.
@@ -500,7 +500,7 @@ and this project adheres to
 - cosmwasm-vm: Add import `addr_validate` ([#802]).
 - cosmwasm-std: Add `BankMsg::Burn` variant when you want the tokens to
   disappear ([#860])
-- cosmwasm-std: Create `Fraction<T>` trait to represent a fraction `p`/`q` with
+- cosmwasm-std: Create a `Fraction<T>` trait to represent a fraction `p`/`q` with
   integers `p` and `q`. `Decimal` now implements `Fraction<u128>`, which
   provides public getters `::numerator()` and `::denominator()`.
 - cosmwasm-std: Add `Decimal::inv` that returns `1/d` for decimal `d`.
